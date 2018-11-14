@@ -1,0 +1,19 @@
+zuul:
+  sensitive-headers: null
+  routes:
+    user-service:
+      path: /user-service/**
+      service-id: bootu-user
+    greeting-service:
+      path: /greeting-service/**
+      service-id: bootu-greeting
+  ignored-patterns: /**/feign/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+hystrix.command.default.execution.timeout.enabled: false
+ribbon:
+  ConnectTimeout:  10000
+  ReadTimeout:  10000
