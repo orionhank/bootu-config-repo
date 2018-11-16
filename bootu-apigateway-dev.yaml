@@ -4,16 +4,14 @@ zuul:
     user-service:
       path: /user-service/**
       service-id: bootu-user
+      semaphore:
+        maxSemaphores:  2000
     greeting-service:
       path: /greeting-service/**
       service-id: bootu-greeting
+      semaphore:
+        maxSemaphores:  2000
   ignored-patterns: /**/feign/**
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-hystrix.command.default.execution.timeout.enabled: false
-ribbon:
-  ConnectTimeout:  10000
-  ReadTimeout:  10000
+  host:
+    max-total-connections: 5000
+    maxPerRouteConnections: 2000
