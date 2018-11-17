@@ -5,26 +5,24 @@ zuul:
       path: /user-service/**
       service-id: bootu-user
       semaphore:
-        maxSemaphores:  2000
+        maxSemaphores:  200
     greeting-service:
       path: /greeting-service/**
       service-id: bootu-greeting
       semaphore:
-        maxSemaphores:  2000
+        maxSemaphores:  200
   ignored-patterns: /**/feign/**
   host:
-    max-total-connections: 1000
-    maxPerRouteConnections: 1000
+    max-total-connections: 2000
+    maxPerRouteConnections: 200
 hystrix.command.default.execution.timeout.enabled: false
 ribbon:
   ConnectTimeout:  250
   ReadTimeout:  2000
-  eager-load:
-    enabled: true
   okhttp:
     enabled: true
 server:
   tomcat:
-    max-threads: 1000
+    max-threads: 200
     max-connections: 2000
-    accept-count: 1000
+    accept-count: 200
