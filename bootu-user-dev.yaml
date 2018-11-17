@@ -1,4 +1,8 @@
 feign:
   hystrix:
     enabled: false
-cust-para-env:  dev
+server:
+  tomcat:
+    max-threads: 1000
+    max-connections: 2000
+    accept-count: 1000

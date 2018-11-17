@@ -13,9 +13,18 @@ zuul:
         maxSemaphores:  2000
   ignored-patterns: /**/feign/**
   host:
-    max-total-connections: 5000
-    maxPerRouteConnections: 2000
+    max-total-connections: 1000
+    maxPerRouteConnections: 1000
 hystrix.command.default.execution.timeout.enabled: false
 ribbon:
-  ConnectTimeout:  10000
-  ReadTimeout:  10000
+  ConnectTimeout:  250
+  ReadTimeout:  2000
+  eager-load:
+    enabled: true
+  okhttp:
+    enabled: true
+server:
+  tomcat:
+    max-threads: 1000
+    max-connections: 2000
+    accept-count: 1000
