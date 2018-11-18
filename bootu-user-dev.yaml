@@ -1,11 +1,11 @@
 feign:
   hystrix:
     enabled: false
-#  okhttp:
-#    enabled: true
-#  httpclient:
-#    max-connections: 1000
-#    max-connections-per-route: 1000
+  okhttp:
+    enabled: true
+  httpclient:
+    max-connections: 1000
+    max-connections-per-route: 1000
 server:
   tomcat:
     max-threads: 200
