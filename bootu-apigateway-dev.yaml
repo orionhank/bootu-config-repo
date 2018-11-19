@@ -13,6 +13,7 @@ zuul:
       # semaphore:
       #   maxSemaphores:  1000
   ignored-patterns: /**/feign/**
+  ## Container keep restarting in aws for below config
   # host:
   #   max-total-connections: 5000
   #   maxPerRouteConnections: 1000
@@ -45,12 +46,12 @@ zuul:
 #   ReadTimeout:  2000
 #   okhttp:
 #     enabled: true
-# server:
+# server: ## Container keep restarting in aws for below config
 #   tomcat:
 #     max-threads: 1000
 #     max-connections: 2000
 #     min-spare-threads:  100
-    # accept-count: 1000
+      # accept-count: 1000
 server:
   tomcat:
     max-threads: 16
@@ -59,4 +60,11 @@ server:
     io-threads: 4
     worker-threads: 24
     buffer-size: 512
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 
