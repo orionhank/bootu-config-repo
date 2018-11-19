@@ -23,6 +23,12 @@ zuul:
     useSeparateThreadPools: true
     threadPoolKeyPrefix: zuulgw
 hystrix:
+  threadpool:
+    default:
+      coreSize: 100
+      maximumSize: 5000
+      allowMaximumSizeToDivergeFromCoreSize: true
+      maxQueueSize: -1
   command:
     default:
       execution:
