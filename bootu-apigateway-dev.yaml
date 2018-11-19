@@ -5,36 +5,36 @@ zuul:
     user-service:
       path: /user-service/**
       service-id: bootu-user
-      semaphore:
-        maxSemaphores:  1000
+      # semaphore:
+      #   maxSemaphores:  1000
     greeting-service:
       path: /greeting-service/**
       service-id: bootu-greeting
-      semaphore:
-        maxSemaphores:  1000
+      # semaphore:
+      #   maxSemaphores:  1000
   ignored-patterns: /**/feign/**
   host:
     max-total-connections: 5000
-    maxPerRouteConnections: 5000
+    maxPerRouteConnections: 1000
   ribbon:
     okhttp:
       enabled:  true
   threadPool:
     useSeparateThreadPools: true
     threadPoolKeyPrefix: zuulgw
-hystrix:
-  threadpool:
-    default:
-      coreSize: 100
-      maximumSize: 5000
-      allowMaximumSizeToDivergeFromCoreSize: true
-      maxQueueSize: -1
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
+# hystrix:
+#   threadpool:
+#     default:
+#       coreSize: 100
+#       maximumSize: 5000
+#       allowMaximumSizeToDivergeFromCoreSize: true
+#       maxQueueSize: -1
+#   command:
+#     default:
+#       execution:
+#         isolation:
+#           thread:
+#             timeoutInMilliseconds: 8000
 ribbon:
   ConnectTimeout:  2000
   ReadTimeout:  2000
@@ -42,5 +42,7 @@ ribbon:
     enabled: true
 server:
   tomcat:
-    max-threads: 500
-    max-connections: 1000
+    max-threads: 128
+    max-connections: 2000
+    min-spare-threads:  64
+    # accept-count: 1000
