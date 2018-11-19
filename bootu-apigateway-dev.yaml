@@ -42,9 +42,9 @@ zuul:
 #   ReadTimeout:  2000
 #   okhttp:
 #     enabled: true
-server:
-  tomcat:
-    max-threads: 1000
-    max-connections: 2000
-    min-spare-threads:  100
+# server:
+#   tomcat:
+#     max-threads: 1000
+#     max-connections: 2000
+#     min-spare-threads:  100
     # accept-count: 1000
