@@ -13,10 +13,12 @@ zuul:
       # semaphore:
       #   maxSemaphores:  1000
   ignored-patterns: /**/feign/**
-  host:
-    max-total-connections: 5000
-    maxPerRouteConnections: 1000
+  # host:
+  #   max-total-connections: 5000
+  #   maxPerRouteConnections: 1000
   ribbon:
+    ConnectTimeout:  2000
+    ReadTimeout:  2000
     okhttp:
       enabled:  true
   threadPool:
@@ -35,11 +37,11 @@ zuul:
 #         isolation:
 #           thread:
 #             timeoutInMilliseconds: 8000
-ribbon:
-  ConnectTimeout:  2000
-  ReadTimeout:  2000
-  okhttp:
-    enabled: true
+# ribbon:
+#   ConnectTimeout:  2000
+#   ReadTimeout:  2000
+#   okhttp:
+#     enabled: true
 server:
   tomcat:
     max-threads: 1000
