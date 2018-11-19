@@ -8,6 +8,6 @@ feign:
     max-connections-per-route: 1000
 server:
   tomcat:
-    max-threads: 200
+    max-threads: 1000
     max-connections: 2000
-    accept-count: 200
+    accept-count: 1000
