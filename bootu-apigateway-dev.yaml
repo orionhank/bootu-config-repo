@@ -1,24 +1,34 @@
 zuul:
   sensitive-headers: null
+  ribbonIsolationStrategy:  THREAD
   routes:
     user-service:
       path: /user-service/**
       service-id: bootu-user
       semaphore:
-        maxSemaphores:  5000
+        maxSemaphores:  1000
     greeting-service:
       path: /greeting-service/**
       service-id: bootu-greeting
       semaphore:
-        maxSemaphores:  5000
+        maxSemaphores:  1000
   ignored-patterns: /**/feign/**
   host:
-    max-total-connections: 1000
-    maxPerRouteConnections: 1000
+    max-total-connections: 5000
+    maxPerRouteConnections: 5000
   ribbon:
     okhttp:
       enabled:  true
-hystrix.command.default.execution.timeout.enabled: false
+  threadPool:
+    useSeparateThreadPools: true
+    threadPoolKeyPrefix: zuulgw
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 ribbon:
   ConnectTimeout:  2000
   ReadTimeout:  2000
