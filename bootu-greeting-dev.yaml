@@ -11,6 +11,3 @@ server:
     io-threads: 4
     worker-threads: 24
     buffer-size: 512
-
-#server:
-#  port: 8081
